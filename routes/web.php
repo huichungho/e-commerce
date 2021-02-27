@@ -29,8 +29,11 @@ Route::resource('product', 'ProductController');
 
 // Customers
 
-Route::resource('customers', 'ProductController');
+Route::resource('customer', 'CustomerController');
 
+// Transactions
+
+Route::resource('transaction', 'TransactionController');
 
 
 
