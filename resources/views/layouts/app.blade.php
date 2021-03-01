@@ -17,9 +17,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{asset("/css/app.css")}}">
+    {{--<link rel="stylesheet" href="{{asset("/css/app.css")}}">--}}
 
 </head>
 <body>
@@ -76,6 +76,9 @@
         </nav>
 
         <main class="py-4">
+            @if (session()->has('message'))
+                <div class="alert alert-info text-center"> {!! session('message') !!} </div>
+            @endif
             @yield('content')
         </main>
     </div>

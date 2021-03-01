@@ -3,6 +3,8 @@
 
     <div class="container">
 
+        <p><a href="{{ url()->to('product/create') }}">Add a Product</a></p>
+
         List of Products
 
         @if(!is_null($product))

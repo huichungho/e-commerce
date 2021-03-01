@@ -25,15 +25,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // CRUD products
 
-Route::resource('product', 'ProductController');
+Route::resource('product', 'ProductController')->middleware('auth');
 
 // Customers
 
-Route::resource('customer', 'CustomerController');
+Route::resource('customer', 'CustomerController')->middleware('auth');
 
 // Transactions
 
-Route::resource('transaction', 'TransactionController');
+Route::resource('transaction', 'TransactionController')->middleware('auth');
 
 
 

@@ -47,24 +47,24 @@ class ProductController extends Controller
             'description' => 'required',
             'price' => 'required|numeric',
         );
-        $validator = Validator()->make(Request::all(), $rules);
+        $validator = Validator()->make(request()->all(), $rules);
 
         // process
         if ($validator->fails()) {
-            return redirect()->to('product.createProduct')
+            return redirect()->back()
                 ->withErrors($validator)
-                ->withInput(Request::all());
+                ->withInput(request()->all());
         } else {
             // store
             $newProduct = new Product;
-            $newProduct->name = Request::get('name');
-            $newProduct->descripton = Request::get('description');
-            $newProduct->price = Request::get('price');
+            $newProduct->name = request()->get('name');
+            $newProduct->description = request()->get('description');
+            $newProduct->price = request()->get('price');
             $newProduct->save();
 
             // redirect
             session()->flash('message', 'Successfully added new product!');
-            return redirect()->to('product.products');
+            return redirect()->back();
         }
     }
 
@@ -114,24 +114,24 @@ class ProductController extends Controller
             'description'=> 'required',
             'price' => 'required|numeric',
         );
-        $validator = validator()->make(Request::all(), $rules);
+        $validator = validator()->make(request()->all(), $rules);
 
         // process the product
         if ($validator->fails()) {
-            return redirect()->to('product.products')
+            return redirect()->back()
                 ->withErrors($validator)
-                ->withInput(Request::all());
+                ->withInput(request()->all());
         } else {
             // update
             $product = Product::find($id);
-            $product->name = Request::get('name');
-            $product->description = Request::get('description');
-            $product->name = Request::get('price');
+            $product->name = request()->get('name');
+            $product->description = request()->get('description');
+            $product->name = request()->get('price');
             $product->save();
 
             // redirect
             session()->flash('message', 'Successfully updated product!');
-            return redirect()->to('product.products');
+            return redirect()->back();
         }
     }
 
@@ -149,6 +149,6 @@ class ProductController extends Controller
 
         // redirect
         session()->flash('message', 'Successfully deleted product');
-        return redirect()->to('product.products');
+        return redirect()->back();
     }
 }
