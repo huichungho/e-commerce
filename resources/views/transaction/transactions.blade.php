@@ -5,14 +5,23 @@
 
         List of transactions
 
+        @if(!is_null($transaction))
+
         <ul>
-            @foreach ($transaction as $eachTransaction)
-                <li>
-                    {{ $eachTransaction->customer->name }}
-                    {{ $eachTransaction->details }}
-                </li>
-            @endforeach
+            @if (isset($singular))
+                {{ $transaction->customer->name }}
+                {{ $transaction->details }}
+            @else
+                @foreach ($transaction as $eachTransaction)
+                    <li>
+                        {{ $eachTransaction->customer->name }}
+                        {{ $eachTransaction->details }}
+                    </li>
+                @endforeach
+            @endif
         </ul>
+
+        @endif
 
     </div>
 

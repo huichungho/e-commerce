@@ -80,7 +80,7 @@ class ProductController extends Controller
         $product = Product::find($id);
 
         // show the edit form and pass the product
-        return view('product.products', compact('product'));
+        return view('product.products', compact('product'))->with('singular',true);
     }
 
     /**

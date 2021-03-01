@@ -5,11 +5,19 @@
 
         List of Customers
 
+        @if(!is_null($customer))
+
         <ul>
-            @foreach ($customer as $eachCustomer)
-                <li>{{ $eachCustomer->name }}</li>
-            @endforeach
+            @if (isset($singular))
+                <li> {{ $customer->name }} </li>
+            @else
+                @foreach ($customer as $eachCustomer)
+                    <li>{{ $eachCustomer->name }}</li>
+                @endforeach
+            @endif
         </ul>
+
+        @endif
 
     </div>
 

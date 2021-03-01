@@ -52,7 +52,7 @@ class CustomerController extends Controller
         $customer = Customer::find($id);
 
         // show the edit form and pass the product
-        return view('customer.customers', compact('customer'));
+        return view('customer.customers', compact('customer'))->with('singular',true);
     }
 
     /**

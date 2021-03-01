@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SuperAdminSeeder::class);   //this is the Super Admin seeder
         $this->call(ProductSeeder::class); // this is the product seeder
         $this->call(CustomerSeeder::class); // this is the customer seeder
+        $this->call(TransactionSeeder::class); // this is the transaction seeder
     }
 }

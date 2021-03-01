@@ -53,7 +53,7 @@ class TransactionController extends Controller
         $transaction = Transaction::find($id);
 
         // show the edit form and pass the transaction
-        return view('transaction.transactions', compact('transaction'));
+        return view('transaction.transactions', compact('transaction'))->with('singular',true);
     }
 
     /**
