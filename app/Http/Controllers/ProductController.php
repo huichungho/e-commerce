@@ -95,7 +95,7 @@ class ProductController extends Controller
         $product = Product::find($id);
 
         // show the edit form and pass the product
-        return view('product.editproduct', compact('product'));
+        return view()->make('product.editProduct')->with('product', $product);
     }
 
     /**
@@ -126,7 +126,7 @@ class ProductController extends Controller
             $product = Product::find($id);
             $product->name = request()->get('name');
             $product->description = request()->get('description');
-            $product->name = request()->get('price');
+            $product->price = request()->get('price');
             $product->save();
 
             // redirect

@@ -11,10 +11,15 @@
 
         <ul>
             @if (isset($singular))
-                <li> {{ $product->name }} </li>
+                <li>
+                    {{ $product->name }} <a href="{{ url('product/'.$product->id).'/edit' }}">[edit]</a>
+                </li>
             @else
                 @foreach ($product as $eachProduct)
-                    <li>{{ $eachProduct->name }}</li>
+                    <li>
+                        <a href="{{ url('product/'.$eachProduct->id).'/edit' }}">[edit]</a>
+                        {{ $eachProduct->name }}
+                    </li>
                 @endforeach
             @endif
         </ul>

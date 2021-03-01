@@ -15,6 +15,12 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+
+                    <br><a href="{{ url('product') }}">List Products</a>
+                    <br><a href="{{ url('customer') }}">List Customers</a>
+                    <br><a href="{{ url('transaction') }}">List Transactions</a>
+
                 </div>
             </div>
         </div>

@@ -10,7 +10,7 @@
         <ul>
             @if (isset($singular))
                 <li> {{ $customer->name }}
-                    <br> + Transaction history
+                    <br> - Transaction history
                     <ul>
                         @foreach ($customer->transaction as $transaction)
                             <li> {{ $transaction->details }} </li>
@@ -19,7 +19,10 @@
                 </li>
             @else
                 @foreach ($customer as $eachCustomer)
-                    <li>{{ $eachCustomer->name }}</li>
+                    <li>
+                        <a href="{{ url('customer').'/'.$eachCustomer->id }}">[details]</a>
+                        {{ $eachCustomer->name }}
+                    </li>
                 @endforeach
             @endif
         </ul>
