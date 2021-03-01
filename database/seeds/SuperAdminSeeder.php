@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -19,9 +20,9 @@ class SuperAdminSeeder extends Seeder
 //        ]);
 
         $role = Role::create(['name' => 'superadmin']);
-        $user = factory(User::class)->create();
+        $user = factory(User::class)->create(['name' => 'superadmin', 'password' => Hash::make('superadmin')]);
         $user->assignRole($role->id);
-//        $this->command->warn($user->email);
-//        $this->command->warn('Password is "superadmin"');
+        $this->command->warn($user->email);
+        $this->command->warn('Password is "superadmin"');
     }
 }

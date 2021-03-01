@@ -9,7 +9,14 @@
 
         <ul>
             @if (isset($singular))
-                <li> {{ $customer->name }} </li>
+                <li> {{ $customer->name }}
+                    <br> + Transaction history
+                    <ul>
+                        @foreach ($customer->transaction as $transaction)
+                            <li> {{ $transaction->details }} </li>
+                        @endforeach
+                    </ul>
+                </li>
             @else
                 @foreach ($customer as $eachCustomer)
                     <li>{{ $eachCustomer->name }}</li>
