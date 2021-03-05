@@ -1,9 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" xmlns="http://www.w3.org/1999/html">
     <div class="row justify-content-center">
         <div class="col-md-8">
+
+            <img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFvj2GRsb34Kgq0mZHFyr_-3AJ31M-NQZOCA&usqp=CAU">
+
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 

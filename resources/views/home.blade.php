@@ -14,12 +14,22 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <p>{{ __('You are logged in!') }}</p>
 
+                    @hasanyrole('customer')
+                        <ul class="list-group">
+                            <li class="list-group-item active"><a class="text-light" href="{{ url('product') }}">Products</a></li>
+                            <li class="list-group-item"><a href="{{ url('transaction').'/'.Auth::user()->id }}">Transactions</a></li>
+                        </ul>
+                    @endhasrole
 
-                    <br><a href="{{ url('product') }}">List Products</a>
-                    <br><a href="{{ url('customer') }}">List Customers</a>
-                    <br><a href="{{ url('transaction') }}">List Transactions</a>
+                    @hasrole('superadmin')
+                        <ul class="list-group">
+                            <li class="list-group-item active"><a class="text-light" href="{{ url('product') }}">Products</a></li>
+                            <li class="list-group-item"><a href="{{ url('customer') }}">Customers</a></li>
+                            <li class="list-group-item"><a href="{{ url('transaction') }}">Transactions</a></li>
+                        </ul>
+                    @endhasrole
 
                 </div>
             </div>

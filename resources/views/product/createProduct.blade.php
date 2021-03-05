@@ -17,9 +17,17 @@
             </div>
 
             <div class="form-group">
+                {{ Form::label('url','URL') }}
+                {{ Form::text('url', Request::old('url'), array('class' => 'form-control', 'placeholder' => 'URL here')) }}
+            </div>
+
+            <div class="form-group">
                 {{ Form::label('price','Price') }}
                 {{ Form::number('price', Request::old('price'), array('class' => 'form-control', 'step' => '0.01', 'placeholder' => '0.00', 'required' => 'required')) }}
             </div>
+
+
+
 
             {{ Form::submit('Add', array('class' => 'btn btn-primary')) }}
 

@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
+use App\User;
+use App\Customer;
 
 class CustomerSeeder extends Seeder
 {
@@ -12,9 +15,29 @@ class CustomerSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('customer')->insert(['name' => 'Kimberly Robertson', 'email' => 'kimberly@gmail.com']);
-        DB::table('customer')->insert(['name' => 'Stephen Mitchell', 'email' => 'stephen@gmail.com']);
-        DB::table('customer')->insert(['name' => 'Natalie Bailey', 'email' => 'natalie@gmail.com']);
-        DB::table('customer')->insert(['name' => 'Jonathan North', 'email' => 'jonathan@gmail.com']);
+        $role = Role::create(['name' => 'customer']);
+
+        $faker = Faker\Factory::create();
+
+        $user = factory(User::class)->create(
+            [
+                'name' => $faker->name,
+                'email' => $faker->unique()->safeEmail,
+                'password' => Hash::make('customer'),
+                'email_verified_at' => now(),
+            ]
+        );
+
+        $user->assignRole($role->id);
+
+        Customer::create([
+            'user_id' => $user->id,
+            'phone' => $faker->phoneNumber,
+            'address' => $faker->address,
+        ]);
+
+        $this->command->warn('/---------------Demo Customer Account:');
+        $this->command->warn($user->email);
+        $this->command->warn('Password is "customer"');
     }
 }

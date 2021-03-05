@@ -1,0 +1,48 @@
+# git clone
+https://github.com/huichungho/e-commerce-backend.git
+
+# build & run
+docker-compose up -d --build
+
+# composer install & update
+composer config platform.php 7.2.5
+docker-compose run --rm composer update
+
+# NPM install and run
+docker-compose run --rm npm install && docker-compose run --rm npm run dev
+
+# register .env
+docker-compose run --rm artisan config:clear
+
+# seeding database
+docker-compose run --rm artisan migrate:fresh --seed
+*1 admin account and 1 customer id will be generated*
+
+# browse to localhost:8080
+
+# setup shopping cart --gloudemans/shoppingcart (https://github.com/Crinsane/LaravelShoppingcart)
+docker-compose run --rm artisan vendor:publish --provider="Gloudemans\Shoppingcart\ShoppingcartServiceProvider" --tag="config"
+
+change 'tax' => 21,  to  'tax' => 0,
+
+# setup Stripe checkout (auto customer provisioning @ Stripe)
+# No authentication (default U.S. card): 4242 4242 4242 4242.
+register 'STRIPE_KEY', 'STRIPE_SECRET' in .env to start using
+# note: Buyer has to register his/her credit card on Stripe to be able to checkout on this portal
+
+# done!
+
+Laravel-PHP-MySQL-Docker-Compose-hardevine-gloudemans-shoppingcart-Stripe-checkout-integration
+
+User Features:
+1. Register customer
+2. Login
+3. Add to cart
+4. Payment
+5. View transactions
+
+Admin Features:
+1. login
+2. Item Management - (List, Add, Edit, View, Delete)
+3. View list of customers - ( List and View)
+4. View List of transactions - (List and View details)

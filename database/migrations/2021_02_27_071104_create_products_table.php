@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name')->unique();
             $table->string('description')->nullable();
             $table->float('price')->nullable(false)->default(0);
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }

@@ -3,13 +3,19 @@
 
     <div class="container">
 
-        List of Customers
+        @if (isset($singular))
+            <p><a href="{{ url('customer') }}">&larr; back</a></p>
+            <h5>Details of Customer</h5>
+        @else
+            <h5>List of Customers</h5>
+        @endif
 
         @if(!is_null($customer))
 
-        <ul>
+        <ul class="list-group">
             @if (isset($singular))
-                <li> {{ $customer->name }}
+                <li class="list-group-item">
+                    {{ $customer->details->name }}
                     <br> - Transaction history
                     <ul>
                         @foreach ($customer->transaction as $transaction)
@@ -19,9 +25,9 @@
                 </li>
             @else
                 @foreach ($customer as $eachCustomer)
-                    <li>
+                    <li class="list-group-item">
                         <a href="{{ url('customer').'/'.$eachCustomer->id }}">[details]</a>
-                        {{ $eachCustomer->name }}
+                        {{ $eachCustomer->details->name }}
                     </li>
                 @endforeach
             @endif

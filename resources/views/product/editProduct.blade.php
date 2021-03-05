@@ -4,7 +4,7 @@
 
     @if (isset($product->id))
 
-        <p><a href="{{ url('product').'/'.$product->id }}">&larr; back</a></p>
+        <p><a href="{{ url('product') }}">&larr; back</a></p>
         <h4>Edit "{{ $product->name }}"</h4>
 
         <br>{{ Form::model($product, array('url' => 'product/'.$product->id, 'method' => 'PUT')) }}
@@ -25,8 +25,9 @@
             </div>
 
             {{ Form::submit('Update', array('class' => 'btn btn-primary')) }}
+            <a class="btn btn-dark" href="{{ url('product') }}" role="button">Cancel</a>
 
-        {{ Form::close() }}
+            {{ Form::close() }}
 
         <hr>
 

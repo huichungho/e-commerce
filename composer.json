@@ -9,13 +9,21 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5|^8.0",
+        "cartalyst/stripe-laravel": "^12.0",
+        "doctrine/dbal": "^2.10",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3.1|^7.0.1",
+        "hardevine/shoppingcart": "^2.9",
+        "illuminate/events": "^7.30",
+        "illuminate/support": "^7.0",
+        "laravel/cashier": "^12.9",
         "laravel/framework": "^7.29",
+        "laravel/helpers": "^1.4",
         "laravel/tinker": "^2.5",
         "laravelcollective/html": "~6.0",
-        "spatie/laravel-permission": "^4.0"
+        "spatie/laravel-permission": "^4.0",
+        "stripe/stripe-php": "^7.75"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.8",
@@ -29,7 +37,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "7.2.5"
+        }
     },
     "extra": {
         "laravel": {

@@ -11,17 +11,20 @@ class SuperAdminSeeder extends Seeder
 {
     public function run()
     {
-        #Super Admin Seeder
-//        $user = User::create([
-//            'name' => 'Super Admin',
-//            'email' => 'admin@ecommerce.com',
-//            'password' => Hash::make('superadmin'),
-//            'remember_token' => Str::random(60),
-//        ]);
+        // Create Super Admin Account
 
         $role = Role::create(['name' => 'superadmin']);
-        $user = factory(User::class)->create(['name' => 'superadmin', 'password' => Hash::make('superadmin')]);
+        $user = factory(User::class)->create(
+            [
+                'name' => 'superadmin',
+                'email' => 'superadmin@ecommerce.com',
+                'password' => Hash::make('superadmin'),
+                'email_verified_at' => now(),
+            ]
+        );
         $user->assignRole($role->id);
+
+        $this->command->warn('/---------------Admin Account:');
         $this->command->warn($user->email);
         $this->command->warn('Password is "superadmin"');
     }

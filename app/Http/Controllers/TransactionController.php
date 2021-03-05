@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,10 +18,10 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transaction = Transaction::all();
+        $transaction = Transaction::paginate(30);
 
-        $isList = true;
-        return view('transaction.transactions', compact( 'transaction'));
+        $bigList = true;
+        return view('transaction.transactions', compact('bigList', 'transaction'));
     }
 
     /**
@@ -50,7 +54,7 @@ class TransactionController extends Controller
     public function show($id)
     {
         // get the transaction
-        $transaction = Transaction::find($id);
+        $transaction = Transaction::where('user_id',$id)->paginate(30);
 
         // show the edit form and pass the transaction
         return view('transaction.transactions', compact('transaction'))->with('singular',true);

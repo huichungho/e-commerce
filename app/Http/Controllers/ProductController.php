@@ -9,6 +9,10 @@ use Mockery\Exception;
 
 class ProductController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +21,7 @@ class ProductController extends Controller
     public function index()
     {
         //dd('list of products');
-        $product = Product::all();
+        $product = Product::paginate(15);
 
         $isList = true;
         return view('product.products', compact('product'));
@@ -55,11 +59,18 @@ class ProductController extends Controller
                 ->withErrors($validator)
                 ->withInput(request()->all());
         } else {
+
+            $url =  request()->get('url');
+            if (!preg_match("~^(?:f|ht)tps?://~i",$url)) {
+                $url = "http://" . $url;
+            }
+
             // store
             $newProduct = new Product;
             $newProduct->name = request()->get('name');
             $newProduct->description = request()->get('description');
             $newProduct->price = request()->get('price');
+            $newProduct->url = $url;
             $newProduct->save();
 
             // redirect

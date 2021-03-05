@@ -24,7 +24,7 @@ class Customer extends Model
     /**
      * @var array
      */
-    protected $fillable = ['name', 'email'];
+    protected $fillable = ['user_id', 'phone', 'address'];
 
     /**
      * Get the customer transactions.
@@ -32,5 +32,10 @@ class Customer extends Model
     public function transaction()
     {
         return $this->hasMany(Transaction::class);
+    }
+
+    public function details()
+    {
+        return $this->belongsTo('App\user', 'user_id');
     }
 }

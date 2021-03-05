@@ -3,22 +3,26 @@
 
     <div class="container">
 
-        List of transactions
+        <p>List of transactions</p>
 
         @if(!is_null($transaction))
 
-        <ul>
-            @if (isset($singular))
-                {{ $transaction->customer->name }}
-                {{ $transaction->details }}
-            @else
-                @foreach ($transaction as $eachTransaction)
-                    <li>
-                        {{ $eachTransaction->customer->name }}
-                        {{ $eachTransaction->details }}
-                    </li>
-                @endforeach
-            @endif
+        <ul class="list-group">
+            @foreach ($transaction as $eachTransaction)
+                <li class="list-group-item">
+                    {{ $eachTransaction->customer->details->name }}
+                    {{ $eachTransaction->details }}
+                    at total of ${{ $eachTransaction->total }}
+                    on {{ $eachTransaction->created_at }}
+                </li>
+            @endforeach
+
+            <br><div class="row">
+                <div class="col-md-12">
+                    {{ $transaction->links() }}
+                </div>
+            </div>
+
         </ul>
 
         @endif

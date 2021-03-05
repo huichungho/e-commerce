@@ -18,6 +18,9 @@ class CreateTransactionsTable extends Migration
             $table->string('details');
             $table->unsignedBigInteger('customer_id');
             $table->foreign('customer_id')->references('id')->on('customer');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->float('total')->default(0);
             $table->timestamps();
         });
     }

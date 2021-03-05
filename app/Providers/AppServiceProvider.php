@@ -23,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // currency converter
+
+        \Blade::directive('convert', function ($value) {
+            return "<?php echo '$'.number_format($value, 2); ?>";
+        });
     }
 }
