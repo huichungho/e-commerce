@@ -19,7 +19,7 @@ docker-compose run --rm artisan migrate:fresh --seed
 *1 admin account and 1 customer id will be generated*
 
 # grant permission to laravel /storage & etc
-docker exec -it php sh chown -R www-data /var/www/html
+docker exec -it php sh -c "chown -R www-data /var/www/html"
 
 # browse to localhost:8080
 
