@@ -1,5 +1,5 @@
 # git clone
-https://github.com/huichungho/e-commerce-backend.git
+https://github.com/huichungho/e-commerce.git
 
 # build & run
 docker-compose up -d --build
